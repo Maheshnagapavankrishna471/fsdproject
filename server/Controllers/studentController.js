@@ -23,6 +23,7 @@ export const getStudentController = async (req, res) => {
         students = await userModel.find()
         console.log(students)
     } catch (e) {
+        console.log(err)
     }
 
     if (!students) {
@@ -61,7 +62,7 @@ export const postStudentController = async (req, res) => {
     try {
         await newStudent.save()
     } catch (err) {
-
+        console.log(err)
     }
     res.status(200).json({
         message: "new student created"
@@ -72,7 +73,7 @@ export const postStudentController = async (req, res) => {
 export const deleteStudentController = async (req, res) => {
     const id = req.params.id
     try{
-         await userModel.findByIdAndDelete(id)
+         await userModel.findByIdAndDelete({_id:id})
          res.status(200).json({
             message:"student deleted"
         })
@@ -92,4 +93,21 @@ export const editStudentController = async (req,res) =>{
         res.send("error",err)
     }
 
+}
+
+export const getEditStudentController = async (req,res) =>{
+    let editstudent;
+    const id = req.params.id
+    try{
+        editstudent = await userModel.findById(id)
+        console.log(editstudent)
+    } catch (e) {
+        console.log(err)
+    }
+    if(!editstudent) {
+        res.status(400).json({
+            message: "No data found"
+        })
+    }
+    res.status(200).json(editstudent)
 }
