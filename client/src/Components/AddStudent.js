@@ -20,6 +20,7 @@ const AddStudent = () => {
             .then((response) => {
               console.log(response);
                 navigate('/')
+                alert("student added successfully👌")
             }).catch((err)=>{
                 console.log("axios erro",err)
             })

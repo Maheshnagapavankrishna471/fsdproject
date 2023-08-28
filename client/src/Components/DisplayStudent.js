@@ -20,6 +20,7 @@ const DisplayStudent = () => {
     const deleteStudent = async (id) =>{
        await  axios.delete(`http://localhost:5000/students/${id}`)
         .then((response)=>{
+            alert("deleted successfully🗑️")
             console.log(response);
         })
         .catch((error)=>{
@@ -32,12 +33,12 @@ const DisplayStudent = () => {
     },[])
     return (
         <div>
-            <h1>display the data bro</h1>
+            <h1>Displaying The Data Here</h1>
 
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
+                        <th scope="col">SNO</th>
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
                         {/* <th scope="col">Password</th> */}

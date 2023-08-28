@@ -99,7 +99,7 @@ export const getEditStudentController = async (req,res) =>{
     let editstudent;
     const id = req.params.id
     try{
-        editstudent = await userModel.findById(id)
+        editstudent = await userModel.findById(id,req.body)
         console.log(editstudent)
     } catch (e) {
         console.log(err)

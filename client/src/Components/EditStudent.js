@@ -33,6 +33,7 @@ const EditStudent = () => {
     e.preventDefault()
     await axios.put(`http://localhost:5000/students/${id}`, student)
     navigate('/')
+    alert("edited successfully📝")
 
   }
   return (
